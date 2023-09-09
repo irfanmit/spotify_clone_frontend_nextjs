@@ -1,0 +1,45 @@
+/* forgot-password.css */
+
+.email-verify {
+  /* Your styling for the outer div */
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-field {
+  /* Your styling for the input fields */
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  margin-bottom: 5px;
+}
+
+.input-field input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.btn {
+  /* Your styling for the buttons */
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.error-message {
+  /* Your styling for error messages */
+  color: red;
+  margin-top: 10px;
+}
