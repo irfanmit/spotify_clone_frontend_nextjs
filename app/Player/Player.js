@@ -84,7 +84,7 @@ const Player = ({setArtist,setTitle,artist, setSimilarSongs ,similarSongs,setFil
     });
     
     
-  }, []);
+  }, [currentTime, liked]);
 
 // Handle fav
 const handleFav = () => {
@@ -354,7 +354,7 @@ const handleFav = () => {
      <div className={styles.similar}>
       <ul>
         {similarSongs.map((song, index) => (
-          <div className={styles.songList2}>
+          <div className={styles.songList2} key={song.id} >
           <div className={isPlaying && currentSong === song ?styles.songList:null}>
           <li style={{ display: 'flex' }} key={index}>
           <div className={isPlaying && currentSong === song ?styles.songListBtn :  null}>

@@ -19,7 +19,7 @@ const Login = () => {
     if (isAuthenticated) {
       router.push('/'); // Redirect to home page if authenticated
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, router]);
 
   const handleSubmit = (e) => {
     setLogining(true);

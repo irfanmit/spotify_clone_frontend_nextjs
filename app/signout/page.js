@@ -8,7 +8,7 @@ const router = useRouter();
     setTimeout(() => {
       router.push('/'); // Redirect to home page after sign-out
     }, 4000); // Wait for 3 seconds before redirecting
-  }, []);
+  }, [router]);
   return (
     <div style={{ textAlign: 'center', marginTop: '20vh' }}>
       <h2>Sign Out Successful</h2>

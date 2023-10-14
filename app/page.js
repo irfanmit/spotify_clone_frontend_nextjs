@@ -35,7 +35,27 @@ const [timer, setTimer] = useState(null);
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 const [error, setError] = useState('');
 const [imagePath, setImagePath] = useState('');
+const [serverConnectionError, setServerConnectionError] = useState('');
+const [serverStatusOnline, setServerStatusOnline] = useState(true)
   const token = localStorage.getItem('token')
+
+  useEffect(() => {
+    const serverUrl = 'http://localhost:8080';
+
+    fetch(serverUrl)
+      .then((response) => {
+        console.log("response" + response)
+        if (!response.ok) {
+          
+          setServerConnectionError(
+            setServerStatusOnline(false)
+          );
+        }
+      })
+      .catch((error) => {
+        setServerStatusOnline(false)
+      });
+  }, []);
 
   useEffect(()=>{
     if(!token)
@@ -85,7 +105,7 @@ fetch('http://localhost:8080/graphql', {
       }
     
       return () => clearTimeout(timer); // Clear the timer on component unmount
-    }, []);
+    }, [timer]);
 
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
@@ -194,6 +214,7 @@ const handlePlay = (event) =>{
 ////////////////////////////
   return (
     <>
+   {serverStatusOnline ? (
     <div className="body" >
     {/* <Portal/> */}
     {isModalOpen  && (
@@ -287,7 +308,23 @@ const handlePlay = (event) =>{
           <Player  imagePath={imagePath} suggestions={suggestions} title={title} artist={artist} setArtist={setArtist} setTitle={setTitle} setSimilarSongs={setSimilarSongs} similarSongs={similarSongs} filePath={filePath} setPrio={setPrio} prio={prio} />
         </div>
       )}
-      </div>
+      </div>) : (
+        <div>
+    <h6>Unable to connect to the server</h6>
+    <br />
+    <ul>
+    <li> try relaodin this page</li>
+      <li>Can not establish a connection to the server at  <span style={{ fontWeight: 'bold' }}>localhost:8080</span>.</li>
+      <li>Check your computer’s network connection.</li>
+      <li>Make sure your browser is permitted to access the web.</li>
+      <li> Server could be offline</li>
+    </ul>
+    <br />
+    <br />
+    <h4>Contact the author at the email address faisalirfan2502@gmail.com</h4>
+  </div>
+
+    )}
     </>
   );
 }

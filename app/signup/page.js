@@ -18,11 +18,11 @@ const Signup = () => {
   const [id, setId] = useState('')
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const [emailError, setEmailError] = useState('')
-
+  const local = localStorage.getItem('email')
   useEffect (()=>{
-    if(localStorage.getItem('email'))
+    if(local)
     Router.push('/signin')
-  },[localStorage.getItem('email')])
+  },[local])
 
 
   const handleSubmit = (e) => {
